@@ -20,7 +20,6 @@ namespace Gioco
         private static ClasseService classeService = serviceProvider.GetService<ClasseService>();
         private static LivelloService livelloService = serviceProvider.GetService<LivelloService>();
 
-
         public static bool ControlloGiocatore(Giocatore giocatore, List<Giocatore> listaGiocatori)
         {
             //Controllo sul giocatore
@@ -40,6 +39,7 @@ namespace Gioco
             giocatoreService.CreateGiocatore(giocatore);
             Console.WriteLine("La registrazione è stata effettuata!");
 
+           
             return true;
     
         }
@@ -106,7 +106,7 @@ namespace Gioco
                 }
             } while (y == 0);
             eroe.Giocatore = giocatoreService.GetGiocatore(giocatore.Nome);
-            eroe.GiocatoreID = giocatore.ID;
+            eroe.GiocatoreID = eroe.Giocatore.ID;
             eroe.Livello = livelloService.GetLivello(1);
             eroe.LivelloID = 1;
 
@@ -200,10 +200,19 @@ namespace Gioco
             mostroService.CreateMostro(mostro);
             return true;
         }
-        public static void RicercaEroiGiocatore(Giocatore giocatore) 
+        public static void RicercaEroiGiocatore(Giocatore giocatore, List<Eroe> listaEroi) 
         {
-            List<Eroe> listaEroi = eroeservice.GetAllEroi().ToList();
+            List<Eroe> list = new List<Eroe>();
+
             foreach (var item in listaEroi)
+            {
+                item.Livello = livelloService.GetLivello(item.LivelloID);
+                item.Classe = classeService.GetClasseByID(item.ClasseID);
+                item.Arma = armaService.GetArmaByID(item.ArmaID);
+                list.Add(item);
+            }
+
+            foreach (var item in list)
             {
                 if (item.GiocatoreID == giocatore.ID)
                 {
@@ -214,14 +223,14 @@ namespace Gioco
         }
         public static Eroe SceltaEroe(List<Eroe> eroi, Giocatore giocatore, List<Classe> listaClassi, List<Arma> listaArmi)
         {
-            RicercaEroiGiocatore(giocatore);
+            RicercaEroiGiocatore(giocatore, eroi);
   
             if (giocatore.ListaEroi.Count == 0)
             {
                 Console.WriteLine("Non ci sono eroi nella tua lista, crea un eroe per giocare");
                 Eroe eroe1 = CreazioneEroe(giocatore, listaClassi, listaArmi, eroi);
-                Eroe eroe2 = eroeservice.CreateEroe(eroe1);
-                return eroe2;
+                
+                return eroe1;
             }
             else
             {
@@ -252,11 +261,10 @@ namespace Gioco
                 }
             }
             
-        }
-
-        //ritorna true se la battaglia è finita, ritorna false se è il turno del mostro
-        public static bool TurnoEroe(Eroe eroe, Mostro mostro)
+        }        public static bool TurnoEroe(Eroe eroe, Mostro mostro)
         {
+            //ritorna true se la battaglia è finita, ritorna false se è il turno del mostro
+
             Console.WriteLine("Scegli:");
             Console.WriteLine("1 - Attaccare il Mostro");
             Console.WriteLine("Premi un tasto per Tentare la fuga");
@@ -309,10 +317,10 @@ namespace Gioco
 
             }
         }
-
-        //ritorna true se la battaglia è finita e false se è il turno del eroe
         public static bool TurnoMostro(Eroe eroe, Mostro mostro)
         {
+            //ritorna true se la battaglia è finita e false se è il turno del eroe
+
             bool y = mostro.Attacco(eroe, mostro);
             if (y == true)
             {
@@ -323,21 +331,23 @@ namespace Gioco
             eroeservice.DeleteEroe(eroe);
             return true;
         }
-       
         public static void VisualizzaEroi(List<Eroe> list,Giocatore g)
         {
+            //in base all'id del giocatore vengono visualizzati gli eroi del giocatore
+            Console.WriteLine();
             foreach (var item in list)
             {
                 if(item.GiocatoreID == g.ID)
                 Console.WriteLine(item.Nome);
             }
         }
-        public static Mostro SceltaMostro(Eroe eroe)
+        public static Mostro SceltaMostro(Eroe eroe, List<Mostro> listaMostri)
         {
-            IEnumerable<Mostro> listaMostri = mostroService.GetAllMostri();
+            //in base al livello dell'eroe che gioca viene scelto il livello del mostro
             int count = 0;
             int livello = eroe.LivelloID;
             List<Mostro> lista = new List<Mostro>();
+            //mi salvo su una lista i mostri con il livello < o = a quello del eroe
             foreach (var item in listaMostri)
             {
                 if (item.LivelloID <= livello)
@@ -346,6 +356,7 @@ namespace Gioco
                     count++;
                 }
             }
+            //con un valore random viene scelto il mostro
             Random random = new Random();
             int a = random.Next(1, count);
             Mostro mostro = mostroService.GetMostroByID(a);
@@ -356,9 +367,9 @@ namespace Gioco
             return mostro;
 
         }
-
         public static int Battaglia(Eroe eroe, Mostro mostro)
         {
+            //faccio partite il conteggio del tempo di gioco dell'eroe
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
 
@@ -372,11 +383,12 @@ namespace Gioco
                     Console.WriteLine("Vuoi salvare i tuoi progressi? Premi 1, altrimenti esci dal gioco");
                     char ex = Console.ReadKey().KeyChar;
                     Console.WriteLine();
+                    //stoppo il tempo e lo inserisco nel tempo di gioco dell'eroe
+                    stopWatch.Stop();
+                    eroe.TempoDiGioco += stopWatch.Elapsed;
                     switch (ex)
                     {
                         case '1':
-                            stopWatch.Stop();
-                            eroe.TempoDiGioco = stopWatch.Elapsed;
                             eroeservice.Update(eroe);
                             x= 1;
                             break;
@@ -394,6 +406,7 @@ namespace Gioco
                     }
                     else
                     {
+                        //è il turno dell'eroe
                         x = 0;
                     }
                     
@@ -402,21 +415,35 @@ namespace Gioco
             } while (x == 0);
             return 0;
         }
-
-        public static void VisualizzaStatistiche(List<Giocatore> listaGiocatori, List<Eroe> listaEroi)
+        public static void VisualizzaStatistiche(Giocatore gioc, List<Giocatore> listaGiocatori, List<Eroe> listaEroi)
         {
-            
-            Console.WriteLine("Di seguito le statistiche del gioco");
-            foreach(var g in listaGiocatori)
+            //Nel caso in cui sia un Admin può vedere tutte le statistiche
+            if (gioc.Ruolo == "Admin")
             {
-                RicercaEroiGiocatore(g);
-                Console.WriteLine("Giocatore {0}", g.Nome);
-                //int x = g.ListaEroi.Count;
-                foreach(var e in g.ListaEroi)
+                Console.WriteLine("Di seguito le statistiche del gioco");
+                foreach (var g in listaGiocatori)
                 {
-                    Console.WriteLine(e.Nome + " - Punti Accumulati: " + e.PuntiAccumulati + " - Tempo di Gioco: " + e.TempoDiGioco);
+                    RicercaEroiGiocatore(g, listaEroi);
+                    Console.WriteLine("Giocatore {0}", g.Nome);
+                    //int x = g.ListaEroi.Count;
+                    foreach (var e in g.ListaEroi)
+                    {
+                        Console.WriteLine(e.Nome + " - Punti Accumulati: " + e.PuntiAccumulati + " - Tempo di Gioco: " + e.TempoDiGioco.TotalMinutes);
+                    }
                 }
             }
+            //Altrimenti ogni giocatore può vedere i punteggi per ogni suo eroe
+            else
+            {
+                RicercaEroiGiocatore(gioc,listaEroi);
+                foreach (var e in gioc.ListaEroi)
+                {
+                    Console.WriteLine(e.Nome + " - Punti Accumulati: " + e.PuntiAccumulati + " - Tempo di Gioco: " + e.TempoDiGioco.TotalMinutes);
+                }
+            }
+            
+           
+
 
         }
     }

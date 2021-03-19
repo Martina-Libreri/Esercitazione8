@@ -46,7 +46,6 @@ namespace ADORepository
                 
             }
         }
-        //non finito
         public bool Delete(Eroe eroe)
         {
             string nome = eroe.Nome;
@@ -74,7 +73,6 @@ namespace ADORepository
             }
             return true;
         }
-
         public IEnumerable<Eroe> GetAll()
         {
             List<Eroe> eroi = new List<Eroe>();
@@ -107,7 +105,6 @@ namespace ADORepository
             return eroi; 
 
         }
-
         public Eroe GetById(int ID)
         {
             Eroe eroe = new Eroe();
@@ -145,7 +142,6 @@ namespace ADORepository
             }
             return eroe;
         }
-
         public Eroe GetByName(string nome)
         {
             Eroe eroe = new Eroe();
@@ -183,7 +179,6 @@ namespace ADORepository
             }
             return eroe;
         }
-
         public bool Update(Eroe eroe)
         {
             using (SqlConnection connection = new SqlConnection(connectionstring))

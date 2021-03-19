@@ -12,9 +12,30 @@ namespace ADORepository
     {
         const string connectionstring = @"Persist Security Info = False; Integrated Security = true; Initial Catalog = EroiVSMostri; Server = .\SQLEXPRESS";
 
-        public void Create(Arma obj)
+        public void Create(Arma a)
         {
-            throw new NotImplementedException();
+            using (SqlConnection connection = new SqlConnection(connectionstring))
+            {
+                //Aprire la connessione
+                connection.Open();
+
+                //Comando
+                SqlCommand command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandType = System.Data.CommandType.Text;
+                command.CommandText = "INSERT INTO Arma VALUES (@Nome, @ClasseID, @Danni)";
+
+                //Aggiunta parametri
+                command.Parameters.AddWithValue("@Nome", a.Nome);
+                command.Parameters.AddWithValue("@ClasseID", a.ClasseID);
+                command.Parameters.AddWithValue("@Danni", a.Danni);
+
+                //Esecuzione comando
+                command.ExecuteNonQuery();
+
+                //Chiusura
+                connection.Close();
+            }
         }
 
         public bool Delete(Arma obj)
@@ -130,9 +151,33 @@ namespace ADORepository
             return arma;
         }
 
-        public bool Update(Arma obj)
+        public bool Update(Arma a)
         {
-            throw new NotImplementedException();
+            using (SqlConnection connection = new SqlConnection(connectionstring))
+            {
+                //Aprire la connessione
+                connection.Open();
+
+                //Comando
+                SqlCommand command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandType = System.Data.CommandType.Text;
+                command.CommandText = "UPDATE Arma SET Nome = @Nome, ClasseID = @ClasseID, Danni = @Danni WHERE ID = @ID";
+
+                //Aggiunta parametri
+                command.Parameters.AddWithValue("@Nome", a.Nome);
+                command.Parameters.AddWithValue("@ClasseID", a.ClasseID);
+                command.Parameters.AddWithValue("@Danni", a.Danni);
+                command.Parameters.AddWithValue("@ID", a.ID);
+
+                //Esecuzione comando
+                SqlDataReader reader = command.ExecuteReader();
+
+                //Chiusura
+                reader.Close();
+                connection.Close();
+            }
+            return true;
         }
     }
 }

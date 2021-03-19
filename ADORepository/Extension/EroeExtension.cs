@@ -18,7 +18,9 @@ namespace ADORepository.Extension
                 GiocatoreID= (int)reader["GiocatoreID"],
                 ClasseID= (int)reader["ClasseID"],
                 LivelloID= (int)reader["LivelloID"],
-                PuntiAccumulati = (int)reader["PuntiAccumulati"]
+                PuntiAccumulati = (int)reader["PuntiAccumulati"],
+                TempoDiGioco = (TimeSpan)reader["TempoDiGioco"],
+                Vittoria = (bool)reader["Vittoria"]
             };
         }
     }
