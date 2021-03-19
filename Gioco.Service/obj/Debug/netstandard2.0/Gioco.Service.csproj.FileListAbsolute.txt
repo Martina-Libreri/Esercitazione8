@@ -1,0 +1,12 @@
+C:\Users\martina.libreri\Desktop\Corso\Gioco\Gioco.Service\bin\Debug\netstandard2.0\Gioco.Service.deps.json
+C:\Users\martina.libreri\Desktop\Corso\Gioco\Gioco.Service\bin\Debug\netstandard2.0\Gioco.Service.dll
+C:\Users\martina.libreri\Desktop\Corso\Gioco\Gioco.Service\bin\Debug\netstandard2.0\Gioco.Service.pdb
+C:\Users\martina.libreri\Desktop\Corso\Gioco\Gioco.Service\bin\Debug\netstandard2.0\Gioco.Core.dll
+C:\Users\martina.libreri\Desktop\Corso\Gioco\Gioco.Service\bin\Debug\netstandard2.0\Gioco.Core.pdb
+C:\Users\martina.libreri\Desktop\Corso\Gioco\Gioco.Service\obj\Debug\netstandard2.0\Gioco.Service.AssemblyInfoInputs.cache
+C:\Users\martina.libreri\Desktop\Corso\Gioco\Gioco.Service\obj\Debug\netstandard2.0\Gioco.Service.AssemblyInfo.cs
+C:\Users\martina.libreri\Desktop\Corso\Gioco\Gioco.Service\obj\Debug\netstandard2.0\Gioco.Service.csproj.CoreCompileInputs.cache
+C:\Users\martina.libreri\Desktop\Corso\Gioco\Gioco.Service\obj\Debug\netstandard2.0\Gioco.Service.csproj.CopyComplete
+C:\Users\martina.libreri\Desktop\Corso\Gioco\Gioco.Service\obj\Debug\netstandard2.0\Gioco.Service.dll
+C:\Users\martina.libreri\Desktop\Corso\Gioco\Gioco.Service\obj\Debug\netstandard2.0\Gioco.Service.pdb
+C:\Users\martina.libreri\Desktop\Corso\Gioco\Gioco.Service\obj\Debug\netstandard2.0\Gioco.Service.csprojAssemblyReference.cache

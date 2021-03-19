@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "nJPU0vFfKCx+etRWMkYR6F8Bx4gvUwTlFlhgXzTzElpFX/jnprqB3LhDduapRSJHBHHMtD+L+KbknH4NZdLoRw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\martina.libreri\\Desktop\\Corso\\Gioco\\Gioco.Core\\Gioco.Core.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\martina.libreri\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\martina.libreri\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

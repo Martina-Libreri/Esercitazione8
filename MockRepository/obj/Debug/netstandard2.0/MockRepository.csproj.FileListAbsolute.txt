@@ -1,0 +1,12 @@
+C:\Users\martina.libreri\Desktop\Corso\Gioco\MockRepository\bin\Debug\netstandard2.0\MockRepository.deps.json
+C:\Users\martina.libreri\Desktop\Corso\Gioco\MockRepository\bin\Debug\netstandard2.0\MockRepository.dll
+C:\Users\martina.libreri\Desktop\Corso\Gioco\MockRepository\bin\Debug\netstandard2.0\MockRepository.pdb
+C:\Users\martina.libreri\Desktop\Corso\Gioco\MockRepository\bin\Debug\netstandard2.0\Gioco.Core.dll
+C:\Users\martina.libreri\Desktop\Corso\Gioco\MockRepository\bin\Debug\netstandard2.0\Gioco.Core.pdb
+C:\Users\martina.libreri\Desktop\Corso\Gioco\MockRepository\obj\Debug\netstandard2.0\MockRepository.csprojAssemblyReference.cache
+C:\Users\martina.libreri\Desktop\Corso\Gioco\MockRepository\obj\Debug\netstandard2.0\MockRepository.AssemblyInfoInputs.cache
+C:\Users\martina.libreri\Desktop\Corso\Gioco\MockRepository\obj\Debug\netstandard2.0\MockRepository.AssemblyInfo.cs
+C:\Users\martina.libreri\Desktop\Corso\Gioco\MockRepository\obj\Debug\netstandard2.0\MockRepository.csproj.CoreCompileInputs.cache
+C:\Users\martina.libreri\Desktop\Corso\Gioco\MockRepository\obj\Debug\netstandard2.0\MockRepository.csproj.CopyComplete
+C:\Users\martina.libreri\Desktop\Corso\Gioco\MockRepository\obj\Debug\netstandard2.0\MockRepository.dll
+C:\Users\martina.libreri\Desktop\Corso\Gioco\MockRepository\obj\Debug\netstandard2.0\MockRepository.pdb

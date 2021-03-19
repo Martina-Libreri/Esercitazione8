@@ -1,0 +1,9 @@
+C:\Users\martina.libreri\Desktop\Corso\Gioco\Gioco.Core\bin\Debug\netstandard2.0\Gioco.Core.deps.json
+C:\Users\martina.libreri\Desktop\Corso\Gioco\Gioco.Core\bin\Debug\netstandard2.0\Gioco.Core.dll
+C:\Users\martina.libreri\Desktop\Corso\Gioco\Gioco.Core\bin\Debug\netstandard2.0\Gioco.Core.pdb
+C:\Users\martina.libreri\Desktop\Corso\Gioco\Gioco.Core\obj\Debug\netstandard2.0\Gioco.Core.csprojAssemblyReference.cache
+C:\Users\martina.libreri\Desktop\Corso\Gioco\Gioco.Core\obj\Debug\netstandard2.0\Gioco.Core.AssemblyInfoInputs.cache
+C:\Users\martina.libreri\Desktop\Corso\Gioco\Gioco.Core\obj\Debug\netstandard2.0\Gioco.Core.AssemblyInfo.cs
+C:\Users\martina.libreri\Desktop\Corso\Gioco\Gioco.Core\obj\Debug\netstandard2.0\Gioco.Core.csproj.CoreCompileInputs.cache
+C:\Users\martina.libreri\Desktop\Corso\Gioco\Gioco.Core\obj\Debug\netstandard2.0\Gioco.Core.dll
+C:\Users\martina.libreri\Desktop\Corso\Gioco\Gioco.Core\obj\Debug\netstandard2.0\Gioco.Core.pdb
